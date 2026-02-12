@@ -8,8 +8,9 @@ ui <- page_fillable(
   div(class = "header-bar",
       # Left side (IS logo + title)
       div(class = "header-left",
-          img(src = "IS Logo RED AND WHITE ONLY.png",class = "logo-is"),
-          div(class = "logo-spacer"),
+          span("Dashboard contains simulated data"),
+          # img(src = "IS Logo RED AND WHITE ONLY.png",class = "logo-is"),
+          # div(class = "logo-spacer"),
           span("West Lothian Unmet Need Dashboard",class = "header-title")),
       # Right side - WLC logo
       img(src = "wlc logo.png", class = "logo-wlc")),
