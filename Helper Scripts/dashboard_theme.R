@@ -64,7 +64,7 @@ bslib::bs_theme(
 
   /*  title text */
   .header-title {
-    font-size: 2.0rem;
+    font-size: 3.0rem;
     margin-left: 40%;
     white-space: nowrap;
     font-weight: bold;
@@ -73,7 +73,7 @@ bslib::bs_theme(
 
   /* WLC logo - RHS */
   .logo-wlc {
-    height: 80px;
+    height: 141px;
   }
     
     body { /* Add border to main body of app */
