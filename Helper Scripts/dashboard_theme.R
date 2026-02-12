@@ -40,9 +40,12 @@ bslib::bs_theme(
     justify-content: space-between;
     align-items: center;
     width: 100%;
-  }
-
-  /* Left Side header (IS logo + title) */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fcdb03;
+    }
+   
+  /* Left Side header (to position simulated data message + title) */
   .header-left {
     display: flex;
     align-items: center;
