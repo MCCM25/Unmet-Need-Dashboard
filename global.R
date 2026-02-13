@@ -19,6 +19,7 @@ library(sf)
 library(plotly)
 library(scales)
 library(waiter)
+library(gt)
 
 # read in data
 Data <- read.csv("Data/comparative_analysis_of_uptake_demand.csv")
