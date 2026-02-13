@@ -9,9 +9,8 @@ ui <- page_fillable(
       # Left side (IS logo + title)
       div(class = "header-left",
           span("Dashboard contains simulated data"),
-          span("West Lothian Unmet Need Dashboard",class = "header-title")),
-      # Right side - WLC logo
-      img(src = "wlc logo.png", class = "logo-wlc")),
+          span("Unmet Need Dashboard",class = "header-title")),
+        ),
   
   layout_sidebar(sidebar = sidebar(
     id = "sidebar",
@@ -35,7 +34,9 @@ ui <- page_fillable(
                nav_panel(
                  title = "Overview",
                  value = "cover",
-                 cover_page(video_id = "hTRIfY89mk0")
+                 cover_page(video_id = "hTRIfY89mk0",
+                            colour_data = uptake_status_colours,
+                            colour_domain = colour_labels)
                ),
                
                nav_panel(
@@ -70,17 +71,20 @@ ui <- page_fillable(
                                       height = "100%"),
                                    spin = "circle")), 
                    div(class = "plotlyOutput",
-                       addSpinner(plotlyOutput(outputId = "line_graph"),
+                       addSpinner(plotlyOutput(
+                             outputId = "line_graph"),
                                   spin = "circle")))
                  ),
                nav_panel(title = "Methodology",
                          value = "methodology",
+                         div(class = "methodology_container",
                          uiOutput("page_title"),
-                         withSpinner(DTOutput("methodology_text"),
+                         withSpinner(
+                           DTOutput("methodology_text"),
                                      type = 5, 
                                      color = "black")
                          )
-  
+               )
                )
     )
   )
