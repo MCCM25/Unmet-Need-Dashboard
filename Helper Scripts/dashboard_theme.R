@@ -64,8 +64,8 @@ bslib::bs_theme(
 
   /*  title text */
   .header-title {
-    font-size: 3.0rem;
-    margin-left: 40%;
+    font-size: 4.0rem;
+    margin-left: 50%;
     white-space: nowrap;
     font-weight: bold;
     color: white;
