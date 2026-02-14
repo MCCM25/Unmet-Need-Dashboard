@@ -8,7 +8,7 @@ These areas where families do not take up the benefits and services they are ent
 # Data 
 The data used in the dashboard contain a mix of simulated council held and publicly available data.
 Datasets used in this tool are: Free School Meals, Clothing Grant, Education Maintenance Allowance, advice uptake, council tax arrears, foodbank usage, housing arrears. Publicly available datasets Children in low-income families from 
-[https://stat-xplore.dwp.gov.uk/webapi/jsf/login.xhtml](#DWP Statxplore), and [https://www.nrscotland.gov.uk/publications/small-area-population-estimates-mid-2022](#NRS) small area population estimates are also included. 
+[DWP StatXplore](https://stat-xplore.dwp.gov.uk/webapi/jsf/login.xhtml), and [NRS](https://www.nrscotland.gov.uk/publications/small-area-population-estimates-mid-2022) small area population estimates are also included. 
 
 # Modelling Approach
 Building on previous work that looked at identifying data zones with low uptake of education benefits - Free School Meals, Clothing Grant, and Education Maintenance Allowance - the dashboard was built to be able to allow council 
