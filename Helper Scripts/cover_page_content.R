@@ -49,9 +49,9 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
     for 5 to 15 year olds, and where the child poverty rate is high, we would expect to see higher uptake of a benefit.
     The dashboard is a tool for identifying those areas where uptake differs notably from demand."),
     
-    p("The table on the right defines the colours used to represent the benefit uptake status of data zones. As well 
-      as showing where uptake is lower, the dashboard displays areas where uptake is higher than estimated as comparison of
-      these with lower uptake areas may provide insight into why ")
+    p("The table below explains the colours used on the map to define uptake status for the datazones. There is also a 
+      guidance video that demonstrates how the dashboard can be used to extract data insights. Below right, there are brief explanations
+      about what each page of the dashboard does.")
   )
 
   ),
