@@ -1,27 +1,31 @@
-# CPAF_Dashboard
-As part of the CPAF project a dashboard to support West Lothian council understand areas of unmet need in relation to child poverty.
+# CPAF Unmet Need Dashboard
+*This dashboard is a mock version of a tool delivered to West Lothian Council by the Improvement service where some datasets have been adapted to simulate a credible distribution of the uptake of benefits relating to child poverty.*
 
-## Resources
-A mockup of the initial app features has been created in Mockflow. A PDF copy of this is saved here, https://impservihub.sharepoint.com/:w:/s/Research104/EYP1GAoLNa5CnFdPEVz_MYABF9J2RR0aiyhpfVBA5KGJIA?e=uZWCLl, this will be updated if additional tabs and features are added. 
+# Purpose
+The purpose of the dashboard is to show for the West Lothian council area data zones where uptake of benefits and services in relation to child poverty are lower than modelled estimates.
+These areas where families do not take up the benefits and services they are entitled to are termed areas of 'unmet need'.
 
-The following flowchart has been created to demonstrate how different parts of the code are related and the process that will be taken for creating the dashboard https://impservihub.sharepoint.com/:u:/s/Research104/EdnNItwPouNJru4Qdc-jkr8BzdGu8HXx_zPGkNMK6Pw5BA?e=AaAhoy. This will be updated if additional tabs and features are added. 
+# Data 
+The data used in the dashboard contain a mix of council held (simulated) and publicly available data. From datasets used in the original dashboard sourced from councils or third sector organisations, these have been
+adapted to simulate a credible distribution using dummy data. Datasets where using simulated data are: Free School Meals, Clothing Grant, 
+Education Maintenance Allowance, Advice uptake, council tax arrears, foodbank usage, and housing arrears. All other datasets used are publicly available from National Records of Scotland (NRS), Census Scotland 2022 
+and DWP StatXplore and retain the original figures. 
 
-The dashboard will use some of the analysis from previous work analysis unmet need and code can be used from this project https://github.com/Improvement-Service/Child-Poverty-Unmet-Need-Analysis. The dashboard will also build on initial scoping work saved here https://github.com/Improvement-Service/WLC-CPAF-Dashboard.
+# Modelling Approach
+Building on previous work that looked at identifying data zones with low uptake of education benefits - Free School Meals, Clothing Grant, and Education Maintenance Allowance - the dashboard was built to be able to allow council 
+officers to visualise these areas in order to better inform resource allocation and service delivery. Funding for this project allowed for greater scope in the datasets that could be included in the tool.
 
-Code in this tool will follow the Tidyverse style guide which can be viewed here https://style.tidyverse.org/index.html
+All data was analysed at data zone level and, where required, aggregated to data zones. Using Census and NRS data sets as denominators was then converted to rates.
 
-A starting point for West Lothian data used in this dashboard can be found here https://impservihub.sharepoint.com/:x:/s/Research104/EWSVeRbf6TVKkhFjhVH0JIIB6mbuzEJRuBrCpJLuIpv92A?e=teAHVv, however more will likely become available. We will also likely need to create some appropriate data files to start with, e.g. uptake numbers, demand numbers, lookup between these, shape files. These datasets should be saved in the folder "Data". 
+To determine whether an area has unmet need, uptake measure (benefit/service) is compared against a demand measure. For example, Free School Meals is compared against the Children in Low-Income Families (CILIF) rate for 10 to 
+18 year olds (P6 children and older) at data zone level. Where there is a higher rate of child poverty we would expect to see a higher uptake of Free School Meals. Both uptake and demand measure are fitted to a linear regression 
+model with the demand measure (CILIF rate) used as the predictor variable and the uptake measure (Free School Meals) as the outcome. Regression estimates of uptake are compared against actual uptake rates for each area and residual 
+differences less than -2 standard deviations/greater than 2 standard deviations from the mean are those data zones identified as outliers where uptake differs significantly from what is estimated. 
+Although the focus of the project was highlighting data zones with lower benefit uptake (those less than -2 standard deviations), the dashboard also displays areas where uptake is higher than estimated as it was felt that awareness and 
+knowledge of these may help to inform council officers of suitable outreach strategies that can be applied to other areas.
 
-Helper scripts, once created, should be run first to create data ready to be used in the dashboard. 
 
-##  Working Together
-The project has been segmented into small tasks and a git Issue has been opened for each of these detailing what needs to be done. These issues were created in the order they should be completed, to view them in order sort from oldest to newest. Each issue has been tagged to show what and where it relates to. Specific types of code (maps, graphs, bespoke functions and reactive expressions) have been tagged so that collaborators can work on the type of issues they are comfortable with.
+For more information on the modelling approach and the data used, see the Methodology section in the dashboard.
 
-To start work on an issue:
 
-Select the name of an issue
-At the right hand-side where it says "Assignees" assign yourself to the issue
-At the right hand-side where it says "Development" create a branch for the issue
-Once you have worked on your code open a pull request for the branch and associate it with the issue
-Once the pull request has been reviewed and agreed the branch can be merged with the Master branch
-Finally close the issue and pull request and delete the branch
+

@@ -37,11 +37,11 @@ run_regression <- function(uptake_measure_name,
     mutate("predicted_uptake_rate" = predict(regression, .)) %>%
     mutate("residuals" = residuals(regression)) %>%
     mutate("standardised_residuals" = 
-             round(residuals/sd(residuals, na.rm = TRUE), 2)) %>%
+             round(residuals/sd(residuals, na.rm = TRUE), 3)) %>%
     # Add a column to signal where standardised residuals are outliers 
-    mutate("outliers" = if_else(standardised_residuals >= 2, 
+    mutate("outliers" = if_else(standardised_residuals >= 2.9, 
                                 "Higher", 
-                                if_else(standardised_residuals <= -2,
+                                if_else(standardised_residuals <= -1,
                                         "Lower",
                                         "Normal"))) %>%
     select(-residuals, -standardised_residuals)

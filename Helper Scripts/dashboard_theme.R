@@ -25,7 +25,7 @@ bslib::bs_theme(
   }
   
   /* remove inner container spacing */
-  .container.fluid, .bs-container {
+  .container-fluid, .bs-container {
     padding: 0 !important;
     margin: 0 !important;
     width: 100%;
@@ -40,9 +40,12 @@ bslib::bs_theme(
     justify-content: space-between;
     align-items: center;
     width: 100%;
-  }
-
-  /* Left Side header (IS logo + title) */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fcdb03;
+    }
+   
+  /* Left Side header (to position simulated data message + title) */
   .header-left {
     display: flex;
     align-items: center;
@@ -61,8 +64,8 @@ bslib::bs_theme(
 
   /*  title text */
   .header-title {
-    font-size: 2.0rem;
-    margin-left: 40%;
+    font-size: 4.0rem;
+    margin-left: 50%;
     white-space: nowrap;
     font-weight: bold;
     color: white;
@@ -70,7 +73,7 @@ bslib::bs_theme(
 
   /* WLC logo - RHS */
   .logo-wlc {
-    height: 80px;
+    height: 141px;
   }
     
     body { /* Add border to main body of app */
@@ -92,12 +95,52 @@ bslib::bs_theme(
     }
     
     
+.coverpage_layout {
+  margin: 20px 0;
+  padding: 30px;
+  background: #f3f3f3;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+
+
+    
+    
     .guidance-video { /* add border to embedded guidance video */
       border: 3px solid #003a60;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     
+    
+    .video_wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 15px;
+}
+
+.video_wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 3px solid #003a60;
+  border-radius: 6px;
+}
+
+    
+    
+    .cover_section {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+}
+
+ .cover_section .btn {
+  width: 100%;
+  margin-top: 10px;
+}
+   
     
       .card { /* put border in IS blue around maps in DZ Summary and CoT panels */
       border: 2px solid #003a60;
@@ -112,7 +155,7 @@ bslib::bs_theme(
       }
       
       #panel_map_dz_summ { /* define panel height on DZ Summary tab to allow map to display */
-      height: 64vh;
+      height: 72vh;
       }
       
     
@@ -136,13 +179,15 @@ bslib::bs_theme(
     border: 2px solid #003a60;
     padding: 1px;
     border-radius: 8px;
-    height: 62vh;
+    height: 100%;
     
     }
     
     #line_graph { /* round plotlyOutput corners to fit neatly inside border */
     border-radius: 8px;
     }
+    
+  
     
     .page-title { /* format title for methodology pages */
       text-align: center;
@@ -185,6 +230,14 @@ bslib::bs_theme(
     div.info.legend.leaflet-control i {
       border: 1.25px solid #003a60 !important;
     }
+    
+  .methodology_container { /* ensure methodology content fits page */
+   height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
    
   ")
 
