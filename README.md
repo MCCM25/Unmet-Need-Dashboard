@@ -1,15 +1,14 @@
 # CPAF Unmet Need Dashboard
-*This dashboard is a mock version of a tool delivered to West Lothian Council by the Improvement service where some datasets have been adapted to simulate a credible distribution of the uptake of benefits relating to child poverty.*
+*This dashboard is a mock version of a tool delivered to West Lothian Council. Datasets used in this tool contain simulated (dummy) data.*
 
 # Purpose
 The purpose of the dashboard is to show for the West Lothian council area data zones where uptake of benefits and services in relation to child poverty are lower than modelled estimates.
 These areas where families do not take up the benefits and services they are entitled to are termed areas of 'unmet need'.
 
 # Data 
-The data used in the dashboard contain a mix of council held (simulated) and publicly available data. From datasets used in the original dashboard sourced from councils or third sector organisations, these have been
-adapted to simulate a credible distribution using dummy data. Datasets where using simulated data are: Free School Meals, Clothing Grant, 
-Education Maintenance Allowance, Advice uptake, council tax arrears, foodbank usage, and housing arrears. All other datasets used are publicly available from National Records of Scotland (NRS), Census Scotland 2022 
-and DWP StatXplore and retain the original figures. 
+The data used in the dashboard contain a mix of simulated council held and publicly available data.
+Datasets used in this tool are: Free School Meals, Clothing Grant, Education Maintenance Allowance, advice uptake, council tax arrears, foodbank usage, housing arrears. Publicly available datasets Children in low-income families from 
+[https://stat-xplore.dwp.gov.uk/webapi/jsf/login.xhtml](#DWP Statxplore), and [https://www.nrscotland.gov.uk/publications/small-area-population-estimates-mid-2022](#NRS) small area population estimates are also included. 
 
 # Modelling Approach
 Building on previous work that looked at identifying data zones with low uptake of education benefits - Free School Meals, Clothing Grant, and Education Maintenance Allowance - the dashboard was built to be able to allow council 
@@ -20,10 +19,7 @@ All data was analysed at data zone level and, where required, aggregated to data
 To determine whether an area has unmet need, uptake measure (benefit/service) is compared against a demand measure. For example, Free School Meals is compared against the Children in Low-Income Families (CILIF) rate for 10 to 
 18 year olds (P6 children and older) at data zone level. Where there is a higher rate of child poverty we would expect to see a higher uptake of Free School Meals. Both uptake and demand measure are fitted to a linear regression 
 model with the demand measure (CILIF rate) used as the predictor variable and the uptake measure (Free School Meals) as the outcome. Regression estimates of uptake are compared against actual uptake rates for each area and residual 
-differences less than -2 standard deviations/greater than 2 standard deviations from the mean are those data zones identified as outliers where uptake differs significantly from what is estimated. 
-Although the focus of the project was highlighting data zones with lower benefit uptake (those less than -2 standard deviations), the dashboard also displays areas where uptake is higher than estimated as it was felt that awareness and 
-knowledge of these may help to inform council officers of suitable outreach strategies that can be applied to other areas.
-
+differences less than -2 standard deviations/greater than 2 standard deviations from the mean are data zones identified as outliers where uptake differs significantly from what is estimated. 
 
 For more information on the modelling approach and the data used, see the Methodology section in the dashboard.
 
