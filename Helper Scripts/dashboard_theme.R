@@ -204,7 +204,6 @@ bslib::bs_theme(
     border: 2px solid #003a60;
     padding: 1px;
     border-radius: 8px;
-    height: 62vh;
     
     }
     
