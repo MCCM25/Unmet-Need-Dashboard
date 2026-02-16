@@ -5,6 +5,8 @@
 The purpose of the dashboard is to show for the West Lothian council area data zones where uptake of benefits and services in relation to child poverty are lower than modelled estimates.
 These areas where families do not take up the benefits and services they are entitled to are termed areas of 'unmet need'.
 
+You can view the [Unmet Need Dashboard](https://www.shinyapps.io/admin/#/application/16686574) here.
+
 # Data 
 The data used in the dashboard contain a mix of simulated council held and publicly available data.
 Datasets used in this tool are: Free School Meals, Clothing Grant, Education Maintenance Allowance, advice uptake, council tax arrears, foodbank usage, housing arrears. Publicly available datasets Children in low-income families from 
