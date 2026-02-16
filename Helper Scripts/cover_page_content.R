@@ -34,7 +34,8 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
               
     div( class = "coverpage_layout",   
     # title
-    h1("Dashboard Overview"),
+    div( class = "title",
+    h1("Dashboard Overview")),
     
     h3("What is meant by 'Unmet Need'?"),
     
