@@ -9,7 +9,6 @@ bslib::bs_theme(
   primary = "#c3002f"
 ) %>% 
   bs_add_rules("
-  
   /* remove padding around panel to maximise page area */
   body, .page-fillable {
     margin: 0 !important;
@@ -25,7 +24,7 @@ bslib::bs_theme(
   }
   
   /* remove inner container spacing */
-  .container-fluid, .bs-container {
+  .container.fluid, .bs-container {
     padding: 0 !important;
     margin: 0 !important;
     width: 100%;
@@ -95,52 +94,78 @@ bslib::bs_theme(
     }
     
     
-.coverpage_layout {
-  margin: 20px 0;
-  padding: 30px;
-  background: #f3f3f3;
-  border-radius: 16px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-}
-
-
+    .coverpage_layout {
+      margin: 20px 0;
+      padding: 30px;
+      background: #f3f3f3;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    }
     
+    .title {/* position title to centre */
+      margin-left: 35%;
+      width: 32%;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+      margin-bottom: 10px;
+    }
     
+   
     .guidance-video { /* add border to embedded guidance video */
       border: 3px solid #003a60;
-      border-radius: 8px;
+      border-radius: 5px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     
-    
     .video_wrapper {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-top: 15px;
-}
-
-.video_wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: 3px solid #003a60;
-  border-radius: 6px;
-}
-
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin-top: 15px;
+    }
+    
+    .video_wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 3px solid #003a60;
+      border-radius: 6px;
+    }
     
     
     .cover_section {
-  background: white;
-  padding: 18px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  margin-bottom: 20px;
-}
-
- .cover_section .btn {
-  width: 100%;
-  margin-top: 10px;
-}
-   
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }
+    
+    
+    .cover_section .btn { /* make coverpage buttons same width as text */
+      width: 100%;
+      background: #003a60;
+      border: 2px solid #c3002f !important;
+      margin-top: 10px;
+    }
+    
+    .contact_link { /* email link background formatting */
+      margin-left: 88%;
+      width: 12%;
+      background: white;
+      padding: 10px;
+      border: 1px solid #003a60 !important;
+      border-radius: 7px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+     
+    .contact_link_text { /* email link text formatting */
+      color: #5b8ea6;
+      size: 1.4rem;
+    }
+    
+     a { /* remove email link underline */
+      text-decoration: none !important;
+    }
     
       .card { /* put border in IS blue around maps in DZ Summary and CoT panels */
       border: 2px solid #003a60;
@@ -155,7 +180,7 @@ bslib::bs_theme(
       }
       
       #panel_map_dz_summ { /* define panel height on DZ Summary tab to allow map to display */
-      height: 72vh;
+      height: 64vh;
       }
       
     
@@ -179,15 +204,13 @@ bslib::bs_theme(
     border: 2px solid #003a60;
     padding: 1px;
     border-radius: 8px;
-    height: 100%;
+    height: 62vh;
     
     }
     
     #line_graph { /* round plotlyOutput corners to fit neatly inside border */
     border-radius: 8px;
     }
-    
-  
     
     .page-title { /* format title for methodology pages */
       text-align: center;
@@ -230,14 +253,6 @@ bslib::bs_theme(
     div.info.legend.leaflet-control i {
       border: 1.25px solid #003a60 !important;
     }
-    
-  .methodology_container { /* ensure methodology content fits page */
-   height: calc(100vh - 120px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
    
   ")
 
