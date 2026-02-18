@@ -114,7 +114,7 @@ function(input, output, session) {
         n_lower = sum(c_across(where(is.character)) == "Lower", na.rm = TRUE),
         n_normal = sum(c_across(where(is.character)) == "Normal", na.rm = TRUE),
         # add uptake measure status column
-        uptake_status = ifelse(n_lower > 0 & n_higher > 0, "Both",
+        uptake_status = ifelse(n_lower > 0 & n_higher > 0, "Lower",
                                ifelse(n_higher == 1, "Higher",
                                       ifelse(n_higher > 1, "Higher - multiple",
                                              ifelse(n_lower == 1, "Lower",
