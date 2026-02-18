@@ -114,7 +114,7 @@ function(input, output, session) {
         n_lower = sum(c_across(where(is.character)) == "Lower", na.rm = TRUE),
         n_normal = sum(c_across(where(is.character)) == "Normal", na.rm = TRUE),
         # add uptake measure status column
-        uptake_status = ifelse(n_lower > 0 & n_higher > 0, "Lower",
+        uptake_status = ifelse(n_lower > 0 & n_higher > 0, "Both",
                                ifelse(n_higher == 1, "Higher",
                                       ifelse(n_higher > 1, "Higher - multiple",
                                              ifelse(n_lower == 1, "Lower",
@@ -140,12 +140,12 @@ function(input, output, session) {
       # uptake measures that have that status and pastes it with a message
       mutate(pop_up = if_else(
         uptake_status %in% c("Lower", "Lower - multiple"),
-        paste("<strong>Benefits with lower than expected uptake: </strong>", 
+        paste("<strong>Benefits with lower than estimated uptake: </strong>", 
               str_c(uptake_measure[indi_benefit_status == "Lower"], 
                     collapse = ", ")),
         if_else(
           uptake_status %in% c("Higher", "Higher - multiple"),
-          paste("<strong>Benefits with higher than expected uptake: </strong>",
+          paste("<strong>Benefits with higher than estimated uptake: </strong>",
                 str_c(uptake_measure[indi_benefit_status == "Higher"], 
                       collapse = ", ")),
           if_else(
@@ -174,12 +174,12 @@ function(input, output, session) {
       # set status message for pop-ups
       mutate(
         status_msg = case_when(
-          uptake_status == "Lower - multiple" ~ "Lower than expected uptake in multiple uptake measures", 
-          uptake_status == "Lower" ~ "Lower than expected uptake for one uptake measure",
-          uptake_status == "Higher" ~ "Higher than expected uptake for one uptake measure",
-          uptake_status == "Higher - multiple" ~ "Higher than expected uptake in multiple uptake measures",
-          uptake_status == "Both" ~ "Higher/Lower expected uptake",
-          uptake_status == "Normal" ~ "No difference to what is expected",
+          uptake_status == "Lower - multiple" ~ "Lower than estimated uptake in multiple uptake measures", 
+          uptake_status == "Lower" ~ "Lower than estimated uptake for one uptake measure",
+          uptake_status == "Higher" ~ "Higher than estimated uptake for one uptake measure",
+          uptake_status == "Higher - multiple" ~ "Higher than estimated uptake in multiple uptake measures",
+          uptake_status == "Both" ~ "Higher/Lower estimated uptake",
+          uptake_status == "Normal" ~ "No difference to what is estimated",
           uptake_status == "Data Suppressed" ~ "Data not available"
         )
       )
@@ -204,11 +204,11 @@ function(input, output, session) {
       # If else statements tests to create pop up message based on uptake status
       mutate(pop_up = if_else(
         uptake_status  == "Lower",
-        paste("<strong>Benefits with lower than expected uptake: </strong>", 
+        paste("<strong>Benefits with lower than estimated uptake: </strong>", 
               uptake_measure),
         if_else(
           uptake_status == "Higher",
-          paste("<strong>Benefits with higher than expected uptake: </strong>",
+          paste("<strong>Benefits with higher than estimated uptake: </strong>",
                 uptake_measure),
           ""))) 
     
@@ -218,12 +218,12 @@ function(input, output, session) {
       # set status message for pop-ups
       mutate(
         status_msg = case_when(
-          uptake_status == "Lower - multiple" ~ "Lower than expected uptake in multiple uptake measures", 
-          uptake_status == "Lower" ~ "Lower than expected uptake for one uptake measure",
-          uptake_status == "Higher" ~ "Higher than expected uptake for one uptake measure",
-          uptake_status == "Higher - multiple" ~ "Higher than expected uptake in multiple uptake measures",
-          uptake_status == "Both" ~ "Higher/Lower expected uptake",
-          uptake_status == "Normal" ~ "No difference to what is expected",
+          uptake_status == "Lower - multiple" ~ "Lower than estimated uptake in multiple uptake measures", 
+          uptake_status == "Lower" ~ "Lower than estimated uptake for one uptake measure",
+          uptake_status == "Higher" ~ "Higher than estimated uptake for one uptake measure",
+          uptake_status == "Higher - multiple" ~ "Higher than estimated uptake in multiple uptake measures",
+          uptake_status == "Both" ~ "Higher/Lower estimated uptake",
+          uptake_status == "Normal" ~ "No difference to what is estimated",
           uptake_status == "Data Suppressed" ~ "Data not available"
         )
       )
@@ -412,7 +412,7 @@ function(input, output, session) {
     # Set Uptake Status colours
     colour_status <- c( "Higher Uptake" = "#38df20",  
                         "Lower Uptake" = "#e02119", 
-                        "As Expected" ="black")
+                        "As Estimated" ="black")
     
     plot <- Data %>% 
       filter(Datazone == selected_small_area(), 
@@ -423,8 +423,8 @@ function(input, output, session) {
       mutate(rate = round(rate * 100, 2), 
              # To highlight only where uptake status is Higher/Lower
              # And to improve presentation of legend entries
-             outliers = case_when(uptake_demand == "demand" ~ "As Expected",
-                                  outliers == "Normal" ~ "As Expected",
+             outliers = case_when(uptake_demand == "demand" ~ "As Estimated",
+                                  outliers == "Normal" ~ "As Estimated",
                                   outliers == "Higher" ~ "Higher Uptake",
                                   outliers == "Lower" ~ "Lower Uptake",
                                   TRUE ~ NA,
@@ -452,13 +452,18 @@ function(input, output, session) {
       # removes '..1)' from legend output
       guides(color = "none")
     
+    # get demand measure name for plotly legend
+    demand_measure_name <- Data %>% 
+      filter(uptake_measure == selected_uptake_measure_single()) %>% 
+      select(demand_measure) %>% unique()
+    
     fig <- ggplotly(plot, tooltip = "text") %>% 
       add_trace(y = ~uptake_demand, 
-                name = "Uptake Rate", 
+                name = paste("Uptake Rate - ", "<br>", selected_uptake_measure_single()),
                 mode = 'lines',
                 line = list(color = "lightblue", width = 4)) %>% 
       add_trace(y = ~uptake_demand, 
-                name = "Demand Rate", 
+                name = paste("Demand Rate - ", "<br>", demand_measure_name), 
                 mode = 'lines',
                 line = list(color = "darkblue", width = 4)) %>%
       config(displayModeBar = FALSE) %>% 
@@ -467,7 +472,11 @@ function(input, output, session) {
                            xanchor = "left",
                            yanchor = "top",
                            title = NA,
-                           orientation = "h"))
+                           orientation = "h"),
+             font = list(
+               family = "Arial",
+               size = 16
+             ))
     })
   
 # Methodology Page ------------------------------------------------------------
