@@ -102,16 +102,7 @@ bslib::bs_theme(
       box-shadow: 0 6px 24px rgba(0,0,0,0.08);
     }
     
-    .title {/* position title to centre */
-      margin-left: 35%;
-      width: 32%;
-      padding: 18px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-      margin-bottom: 10px;
-    }
-    
-   
+
     .guidance-video { /* add border to embedded guidance video */
       border: 3px solid #003a60;
       border-radius: 5px;
