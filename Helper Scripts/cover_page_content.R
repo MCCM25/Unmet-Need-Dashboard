@@ -17,7 +17,7 @@ uptake_status_colours <- data.frame(
     "Data zones where multiple benefits have lower than estimated uptake.",
     "Data zones where only one benefit has higher than estimated uptake.",
     "Data zones where multiple benefits have higher than estimated uptake.",
-    "Data zones where uptake lies within the normal range.", 
+    "Data zones where uptake lies within the normal range of estimated uptake.", 
     "Data zones where due to data suppression estimated uptake can not be calculated."
   )
 )
@@ -31,13 +31,10 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
     fluidRow(
       column( width = 12,
               
-              
     div( class = "coverpage_layout",   
+         
     # title
-    div( class = "title",
-    h1("Dashboard Overview")),
-    
-    h3("What is meant by 'Unmet Need'?"),
+    h4("What is meant by 'Unmet Need'?"),
     
     p("This dashboard aims to support users to identify local areas where there 
     may be unmet need in relation to child poverty. Unmet need is defined as cases 
@@ -50,20 +47,22 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
     for 5 to 15 year olds, and where the child poverty rate is high, we would expect to see higher uptake of a benefit.
     The dashboard is a tool for identifying those areas where uptake differs notably from demand."),
     
-    p("The table below explains the colours used on the map to define uptake status for the datazones. There is also a 
-      guidance video that demonstrates how the dashboard can be used to extract data insights. Below right, there are brief explanations
-      about what each page of the dashboard does.")
+    p("Data zones on the map are coloured according to uptake status to show how actual uptake compares against modelled estimated
+      uptake. The table below defines the colours used to show whether a data zone has higher or lower uptake for single or multiple
+      benefits." ),
+    
+    p("Also included on this page is a guidance video demonstrating how the dashboard can be used effectively to extract insight from the data 
+      and brief explanations about what each page of the dashboard does.")
   )
 
   ),
   
   
   fluidRow(
-   
          column(
-           width = 6,
-           div(class = "cover_section",
-           h3("Data zone map colours"),
+           width = 5,
+           div( class = "cover_section",
+           h5("Data zone map colour key"),
            div(class = "table_wrapper",
                 div( class = "gt_table",
                      colour_data %>% 
@@ -112,8 +111,7 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
          
       div(class = "cover_section", 
            # video embedding
-       h3("Watch the short video below on how to use the dashboard"),
-       br(),
+       h5("Watch the video on how to use the dashboard"),
        div( class = "video_wrapper",
         tags$iframe(
           src = paste0("https://www.youtube.com/embed/", video_id),
@@ -128,7 +126,7 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
       ),
       
       column(
-        width = 6,
+        width = 7,
     
       div( class = "coverpage_text",
            
@@ -170,8 +168,16 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
         open_tab = "Go to Methodology"
         
         )
-      )
+      
+      
+      ),
+        div( class = "contact_link", 
+        tags$a(href = "mailto:research@improvementservice.org.uk", 
+               div(class = "contact_link_text", 
+                 tags$strong("Contact us")), target = "_blank")
        )
+       )
+      
       )
   )
   )
@@ -185,7 +191,7 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
 cover_section <- function(title, description, button_id, open_tab){
    div(
      class = "cover_section",
-     h3(title),
+     h5(title),
      p(description),
      actionButton(button_id, open_tab, class = "btn-primary")
    )
