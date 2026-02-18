@@ -82,13 +82,13 @@ data_table <- Data %>%
          "Actual uptake rate" = "uptake_rate",
          "Measure of demand" = "demand_measure",
          "Demand rate" = "demand_rate",
-         "Predicted uptake rate" = "predicted_uptake_rate",
-         "How does actual uptake compare to what is predicted?" = "outliers") %>%
+         "Estimated uptake rate" = "predicted_uptake_rate",
+         "How does actual uptake compare to estimated uptake?" = "outliers") %>%
   # Set text columns as factors to enable filtering within the table
   mutate_if(is.character, as.factor) %>%
   mutate(across(c(`Actual uptake rate`, 
                   `Demand rate`, 
-                  `Predicted uptake rate`), 
+                  `Estimated uptake rate`), 
                 ~case_when(
                   `Measure of demand` == "Financial Vulnerability Index" & cur_column() == "Demand rate" ~
                     as.character(round(.x, 1)),
@@ -168,7 +168,7 @@ summary_table <- datatable(data = data_table,
   # columns = TRUE specifies that the formatting be applied to all columns
   formatStyle(columns = TRUE,
               # valueColumns specify which column to base colours on
-              valueColumns = 'How does actual uptake compare to what is predicted?',
+              valueColumns = 'How does actual uptake compare to estimated uptake?',
               backgroundColor = styleEqual(c("Higher", "Lower"), 
                                            c('green', 'red')),
               color = styleEqual(c("Higher", "Lower"),
