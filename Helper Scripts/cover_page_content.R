@@ -172,7 +172,7 @@ cover_page <- function(video_id = "vid_id", colour_data, colour_domain){
       
       ),
         div( class = "contact_link", 
-        tags$a(href = "mailto:research@improvementservice.org.uk", 
+        tags$a(href = "mailto:mcm.gw@outlook.com", 
                div(class = "contact_link_text", 
                  tags$strong("Contact us")), target = "_blank")
        )
